@@ -40,8 +40,8 @@ A powerful research assistant built with CrewAI, Exa, and Streamlit that helps y
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/crewai-research-assistant.git
-cd crewai-research-assistant
+git clone https://github.com/tonykipkemboi/crewai-streamlit-demo.git
+cd crewai-streamlit-demo
 ```
 
 2. Create and activate a virtual environment:
