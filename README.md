@@ -8,7 +8,7 @@ A powerful research assistant built with CrewAI, Exa, and Streamlit that helps y
 
 ## 🌟 Features
 
-- 🤖 Multiple LLM Support (OpenAI and GROQ)
+- 🤖 Multiple LLM Support
 - 🔍 Advanced answering capabilities using Exa
 - 📊 Real-time research process visualization
 - 📝 Structured research reports
@@ -16,17 +16,50 @@ A powerful research assistant built with CrewAI, Exa, and Streamlit that helps y
 - 🔒 Secure API key management
 - 📱 Responsive and modern UI
 
+## 📚 Code Organization
+
+- **Main Application (`streamlit_app.py`)**:
+  - Configures the Streamlit interface
+  - Manages the research workflow
+  - Handles result display
+
+- **Research Component (`researcher.py`)**:
+  - Configures LLM providers (OpenAI, GROQ, Ollama)
+  - Creates research agents with appropriate tools
+  - Defines research task structure
+  - Manages the research execution process
+
+- **Sidebar Component (`sidebar.py`)**:
+  - Handles model selection UI
+  - Manages API key input
+  - Integrates with local Ollama instance
+  - Provides configuration options
+
+- **Output Handler (`output_handler.py`)**:
+  - Captures and formats research process output
+  - Manages real-time display updates
+
+
 ## 🛠️ Project Structure
 
 ```
-.
-├── streamlit_app.py          # Main application file
+crewai-streamlit-demo/
+├── streamlit_app.py # Main Streamlit application entry point
+├── requirements.txt # Project dependencies
 └── src/
-    ├── components/           # UI and functional components
-    │   ├── researcher.py     # Research agent implementation
-    │   └── sidebar.py        # Sidebar configuration
-    └── utils/
-        └── output_handler.py # Process output management
+├── components/
+│ ├── researcher.py # Research agent and task implementation
+│ │ # - LLM configuration
+│ │ # - Research task creation
+│ │ # - Exa search integration
+│ └── sidebar.py # Sidebar UI and configuration
+│ # - Model selection
+│ # - API key management
+│ # - Ollama integration
+└── utils/
+└── output_handler.py # Process output management
+   # - Real-time output capture
+   # - Output formatting
 ```
 
 ## 📋 Requirements

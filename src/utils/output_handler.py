@@ -4,6 +4,9 @@ from contextlib import contextmanager
 from io import StringIO
 import re
 
+#--------------------------------#
+#         Output Handler         #
+#--------------------------------#
 class StreamlitProcessOutput:
     def __init__(self, container):
         self.container = container
