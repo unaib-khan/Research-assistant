@@ -4,7 +4,6 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import os
-
 from src.components.sidebar import render_sidebar
 from src.components.researcher import create_researcher, create_research_task, run_research
 from src.utils.output_handler import capture_output
