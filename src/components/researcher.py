@@ -17,18 +17,19 @@ class EXAAnswerTool(BaseTool):
     description: str = "A tool that asks Exa a question and returns the answer."
     args_schema: Type[BaseModel] = EXAAnswerToolSchema
     answer_url: str = "https://api.exa.ai/answer"
-    headers: dict = {
-        "accept": "application/json",
-        "content-type": "application/json",
-        "x-api-key": os.getenv("EXA_API_KEY")
-    }
 
     def _run(self, query: str):
+        headers = {
+            "accept": "application/json",
+            "content-type": "application/json",
+            "x-api-key": os.getenv("EXA_API_KEY")
+        }
+        
         try:
             response = requests.post(
                 self.answer_url,
                 json={"query": query, "text": True},
-                headers=self.headers,
+                headers=headers,
             )
             response.raise_for_status() 
         except requests.exceptions.HTTPError as http_err:
