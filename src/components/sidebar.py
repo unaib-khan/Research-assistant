@@ -41,8 +41,14 @@ def render_sidebar():
             provider = st.radio(
                 "Select LLM Provider",
                 ["OpenAI", "GROQ", "Ollama"],
-                help="Choose which Large Language Model provider to use",
-                horizontal=True
+                help="Choose which Large Language Model provider to use. Ollama is only available for local development.",
+                horizontal=True,
+                disabled={"Ollama"} if not os.getenv("IS_LOCAL", False) else set(),  # Disable Ollama in deployed version
+                captions=[
+                    "Reliable performance",
+                    "Ultra-fast inference",
+                    "Local deployment only"
+                ]
             )
             
             if provider == "OpenAI":
