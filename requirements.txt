@@ -2,5 +2,4 @@ crewai
 crewai-tools
 streamlit
 exa-py
-requests
-aiosqlite>=0.19.0
+requestspysqlite3-binary
