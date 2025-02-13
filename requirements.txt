@@ -3,4 +3,4 @@ crewai-tools
 streamlit
 exa-py
 requests
-pysqlite3-binary
+sqlite3>=3.35.0
