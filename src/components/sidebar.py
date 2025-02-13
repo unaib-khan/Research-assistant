@@ -59,16 +59,15 @@ def render_sidebar():
                 model = st.selectbox(
                     "Select GROQ Model",
                     [
-                        "mixtral-8x7b-32768",
+                        "qwen-2.5-32b",
+                        "deepseek-r1-distill-qwen-32b",
+                        "deepseek-r1-distill-llama-70b",
                         "llama-3.3-70b-versatile",
                         "llama-3.1-8b-instant",
-                        "llama-3.2-1b-preview",
-                        "deepseek-r1-distill-llama-70b",
-                        "llama-3.2-1b-preview",
                         "Custom"
                     ],
                     index=0,
-                    help="Choose from GROQ's available models"
+                    help="Choose from GROQ's available models. All these models support tool use and parallel tool use."
                 )
                 if model == "Custom":
                     model = st.text_input("Enter your custom GROQ model:", value="", help="Specify your custom model string")
