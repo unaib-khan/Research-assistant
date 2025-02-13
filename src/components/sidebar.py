@@ -55,6 +55,23 @@ def render_sidebar():
                     model = st.text_input("Enter your custom OpenAI model:", value="", help="Specify your custom model string")
                 else:
                     model = model_option
+            elif provider == "GROQ":
+                model = st.selectbox(
+                    "Select GROQ Model",
+                    [
+                        "mixtral-8x7b-32768",
+                        "llama-3.3-70b-versatile",
+                        "llama-3.1-8b-instant",
+                        "llama-3.2-1b-preview",
+                        "deepseek-r1-distill-llama-70b",
+                        "llama-3.2-1b-preview",
+                        "Custom"
+                    ],
+                    index=0,
+                    help="Choose from GROQ's available models"
+                )
+                if model == "Custom":
+                    model = st.text_input("Enter your custom GROQ model:", value="", help="Specify your custom model string")
             elif provider == "Ollama":
                 # Get available Ollama models
                 ollama_models = get_ollama_models()
@@ -68,9 +85,6 @@ def render_sidebar():
                         ollama_models,
                         help="Choose from your locally available Ollama models. For best results, use models known to handle function calling well (e.g., mixtral, openhermes)."
                     )
-            else:
-                # For GROQ, use the default model string
-                model = "groq/deepseek-r1-distill-llama-70b"
         
         with st.expander("🔑 API Keys", expanded=True):
             st.info("API keys are stored temporarily in memory and cleared when you close the browser.")
