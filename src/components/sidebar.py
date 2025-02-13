@@ -38,17 +38,20 @@ def render_sidebar():
         st.markdown("### ⚙️ Configuration")
         st.write("")
         with st.expander("🤖 Model Selection", expanded=True):
+            # Show message if not running locally
+            if not os.getenv("IS_LOCAL", False):
+                st.info("⚠️ Ollama is only available for local development")
+            
             provider = st.radio(
                 "Select LLM Provider",
-                ["OpenAI", "GROQ", "Ollama"],
-                help="Choose which Large Language Model provider to use. Ollama is only available for local development.",
+                ["OpenAI", "GROQ", "Ollama"] if os.getenv("IS_LOCAL", False) else ["OpenAI", "GROQ"],
+                help="Choose which Large Language Model provider to use",
                 horizontal=True,
-                disabled={"Ollama"} if not os.getenv("IS_LOCAL", False) else set(),  # Disable Ollama in deployed version
                 captions=[
                     "Reliable performance",
                     "Ultra-fast inference",
-                    "Local deployment only"
-                ]
+                    "Local deployment only" if os.getenv("IS_LOCAL", False) else None
+                ][:2] if not os.getenv("IS_LOCAL", False) else None
             )
             
             if provider == "OpenAI":
