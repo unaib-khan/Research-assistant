@@ -3,4 +3,4 @@ crewai-tools
 streamlit
 exa-py
 requests
-sqlite3>=3.35.0
+aiosqlite>=0.19.0
