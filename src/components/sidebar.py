@@ -5,6 +5,18 @@ import requests
 #--------------------------------#
 #      Ollama Integration        #
 #--------------------------------#
+def is_ollama_available():
+    """Check if Ollama is available by attempting to connect to its API.
+    
+    Returns:
+        bool: True if Ollama is running and accessible, False otherwise
+    """
+    try:
+        response = requests.get("http://localhost:11434/api/tags", timeout=1)
+        return response.status_code == 200
+    except:
+        return False
+
 def get_ollama_models():
     """Get list of available Ollama models from local instance.
     
@@ -39,19 +51,20 @@ def render_sidebar():
         st.write("")
         with st.expander("🤖 Model Selection", expanded=True):
             # Show message if not running locally
-            if not os.getenv("IS_LOCAL", False):
-                st.info("⚠️ Ollama is only available for local development")
+            ollama_available = is_ollama_available()
+            if not ollama_available:
+                st.info("⚠️ Ollama is not available. Make sure it's running locally if you want to use it.")
             
             provider = st.radio(
                 "Select LLM Provider",
-                ["OpenAI", "GROQ", "Ollama"] if os.getenv("IS_LOCAL", False) else ["OpenAI", "GROQ"],
+                ["OpenAI", "GROQ", "Ollama"] if ollama_available else ["OpenAI", "GROQ"],
                 help="Choose which Large Language Model provider to use",
                 horizontal=True,
                 captions=[
                     "Reliable performance",
                     "Ultra-fast inference",
-                    "Local deployment only" if os.getenv("IS_LOCAL", False) else None
-                ][:2] if not os.getenv("IS_LOCAL", False) else None
+                    "Local deployment" if ollama_available else None
+                ][:2] if not ollama_available else None
             )
             
             if provider == "OpenAI":
