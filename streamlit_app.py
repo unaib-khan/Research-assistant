@@ -4,6 +4,11 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 import streamlit as st
 import os
+
+# Set IS_LOCAL based on Streamlit's server address
+is_local = os.getenv('STREAMLIT_SERVER_ADDRESS', '') in ['localhost', '0.0.0.0', '127.0.0.1', '']
+os.environ['IS_LOCAL'] = str(is_local)
+
 from src.components.sidebar import render_sidebar
 from src.components.researcher import create_researcher, create_research_task, run_research
 from src.utils.output_handler import capture_output
