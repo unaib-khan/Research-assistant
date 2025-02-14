@@ -70,7 +70,7 @@ def render_sidebar():
             if provider == "OpenAI":
                 model_option = st.selectbox(
                     "Select OpenAI Model",
-                    ["gpt-4o-mini", "gpt-4o", "o1", "o1-mini", "o1-preview", "o3-mini", "Custom"],
+                    ["gpt-4o-mini", "gpt-4o"],
                     index=0
                 )
                 if model_option == "Custom":
@@ -83,10 +83,7 @@ def render_sidebar():
                     [
                         "qwen-2.5-32b",
                         "deepseek-r1-distill-qwen-32b",
-                        "deepseek-r1-distill-llama-70b",
-                        "llama-3.3-70b-versatile",
-                        "llama-3.1-8b-instant",
-                        "Custom"
+                        "deepseek-r1-distill-llama-70b"
                     ],
                     index=0,
                     help="Choose from GROQ's available models. All these models support tool use and parallel tool use."
