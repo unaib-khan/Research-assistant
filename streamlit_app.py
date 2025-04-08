@@ -102,4 +102,4 @@ if start_research:
 st.divider()
 footer_col1, footer_col2, footer_col3 = st.columns([1, 2, 1])
 with footer_col2:
-    st.caption("Made with ❤️ using [CrewAI](https://crewai.com), [Exa](https://exa.ai) and [Streamlit](https://streamlit.io)")
+    st.caption("Made with ❤️ by Unaib ")
