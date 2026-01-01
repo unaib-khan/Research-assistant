@@ -1,3 +1,6 @@
+import os
+
+os.environ["CREWAI_TELEMETRY_ENABLED"] = "False"
 from typing import Type
 from crewai import Agent, Task, Crew, Process, LLM
 from crewai.tools import BaseTool
