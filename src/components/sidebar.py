@@ -81,9 +81,9 @@ def render_sidebar():
                 model = st.selectbox(
                     "Select GROQ Model",
                     [
-                        "qwen-2.5-32b",
-                        "deepseek-r1-distill-qwen-32b",
-                        "deepseek-r1-distill-llama-70b"
+                        "mixtral-8x7b-32768",
+                        "llama-3.1-8b-instant",
+                        "gemma2-9b-it"
                     ],
                     index=0,
                     help="Choose from GROQ's available models. All these models support tool use and parallel tool use."
