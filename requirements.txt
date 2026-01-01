@@ -1,5 +1,5 @@
-crewai
-crewai-tools
+crewai==0.157.0
+crewai-tools==0.60.0
 streamlit
 exa-py
 requests
